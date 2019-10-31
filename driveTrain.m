@@ -4,7 +4,11 @@ function driveTrain
     m1.start();
     m2.start();
     while 1
+        if danger == 0
             forward();
+        elseif danger == 1
+            turnRight();
+        end
     end
 end
 
