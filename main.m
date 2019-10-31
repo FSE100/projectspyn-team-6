@@ -1,4 +1,4 @@
-
+% brick = ConnectBrick('CardiganB')
 classdef main
     properties
     end
@@ -8,7 +8,6 @@ classdef main
             InitKeyboard();
             start = true;
         while start == true
-            brick = ConnectBrick('POE');
             liftUp();
             switch key 
                 case 't'
