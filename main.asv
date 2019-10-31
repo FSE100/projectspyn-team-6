@@ -1,32 +1,40 @@
-global key
-global danger
-InitKeyboard();
-brick = ConnectBrick('POE');
 
-start = true;
 
-while start == true
-    liftUp();
-    switch key 
-        case 't'
-             test();
-        case 'g'
-             sensorColor();
-             ultraSonic();
-             driveTrain();
-        case 'y'
-             sensorColor();
-             ultraSonic();
-             driveTrain();
-        case 'b'
-             sensorColor();
-             ultraSonic();
-             driveTrain();
-        case 's'
-             start = false;
-             break;
+classdef main
+    properties
     end
- 
+    methods
+        function main1()
+            global key
+            InitKeyboard();
+        while start == true
+            brick = ConnectBrick('POE');
+            liftUp();
+       
+            start = true;
+            switch key 
+                case 't'
+                    test();
+                case 'g'
+                    sensorColor();
+                    ultraSonic();
+                    driveTrain();
+                case 'y'
+                    sensorColor();
+                    ultraSonic();
+                    driveTrain();
+                case 'b'
+                    sensorColor();
+                    ultraSonic();
+                    driveTrain();
+                case 's' % Exit in case something goes wrong, probably will
+                    start = false;
+                    break;
+            end
+        end
+        end
+    end
 end
+ 
 
 CloseKeyboard();

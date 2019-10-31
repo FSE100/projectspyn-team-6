@@ -14,6 +14,7 @@ end
 
 function turnRight()
     m2.setProperties('power', 10);
+    pause(5);
 end
 function turnLeft()
     m1.setProperties('power', 10);
