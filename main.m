@@ -21,7 +21,7 @@ while start == true
              sensorColor();
              ultraSonic();
              driveTrain();
-        case 's'
+        case 's' % Exit in case something goes wrong, probably will
              start = false;
              break;
     end

@@ -9,14 +9,14 @@ function driveTrain
 end
 
 function turnRight()
-m2.setProperties('power', 10);
+    m2.setProperties('power', 10);
 end
 function turnLeft()
-m1.setProperties('power', 10);
+    m1.setProperties('power', 10);
 end
 function forward()
-m1.setProperties('power', 10);
-m2.setProperties('power', 10);
+    m1.setProperties('power', 10);
+    m2.setProperties('power', 10);
 end
 
 
