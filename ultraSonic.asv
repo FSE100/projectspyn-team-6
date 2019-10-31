@@ -1,0 +1,13 @@
+global danger;
+danger = false;
+function ultraSonic()
+    distance = brick.UltrasonicDist(1);
+    driveTrain();
+    while danger == false
+        if distance > 10
+            driveTrain();
+        else
+            danger = true;
+        end
+    end
+end
