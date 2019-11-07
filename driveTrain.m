@@ -1,8 +1,4 @@
 function driveTrain
-    m1 = brick.motorA; % Right Motor
-    m2 = brick.motorB; % Left Motor
-    m1.start();
-    m2.start();
     while 1
         if danger == 0
             forward();

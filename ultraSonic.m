@@ -1,6 +1,6 @@
-global danger;
+%global danger;
 function ultraSonic()
-    danger = 0;
+    %danger = 0;
     distance = brick.UltrasonicDist(1);
     while 1
         if distance > 10
