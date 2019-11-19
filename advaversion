@@ -1,0 +1,58 @@
+% a version of movement: moves forward
+%                      checks rightside sonic sensor, if jump in distance, turns right
+%                      checks touchsensor, if pressed turns left
+%                      not sure about which colors do what, but catches them
+
+ % A is left, B is right, C is claw (maybe)
+ % 1 is sonic, 2 is touch, 3 is color
+ %
+ %
+ 
+ brick.SetColorMode(3,2);
+ 
+while 1 
+    
+    color = brick.ColorCode(3);
+    %color = readColor(mycolorsensor)
+    
+    if color==3         %green, search?
+                        
+    end
+    
+    if color==4         %yellow, slow?
+                        
+    end
+    
+    if color==2         %blue, dropoff?
+                        
+    end
+    
+    %checks distance before moving 1 unit
+    olddistance = brick.UltrasonicDist(1);
+    %olddistance = readDistance(mysonicsensor);
+    
+    brick.MoveMotor('A', 30);       %move forward one unit
+    brick.MoveMotor('B', 30);       %still need to cut the dist/time ofmove
+    pause(1);                    %-->check if this works, if it stops both?
+    
+    reading = brick.TouchPressed(2);%also check touchsensor
+    
+    %checks distance after moving 1 unit
+    distance = brick.UltrasonicDist(1);
+    %distance = readDistance(mysonicsensor)
+    
+    %compares distance, checks for large increase
+    if (distance) > (oldistance+10)
+        brick.MoveMotor('A', 30); %turn right 90 degrees
+        brick.MoveMotor('B', -30);
+        pause(0.5);               %-->adjust if necessary 
+    end
+    
+    if (reading==1)               %check if touchsensor set to on
+        brick.MoveMotor('A', -30);
+        brick.MoveMotor('B', 30);
+        pause(0.5);     %turn left and set sensor back to off
+    end
+
+
+end
