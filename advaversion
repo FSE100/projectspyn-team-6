@@ -59,9 +59,9 @@ while 1
     
     if color==4         %yellow, slow?
     
-    brick.MoveMotor('A', 30);       
-    brick.MoveMotor('B', 30);       
-    pause(1);                 
+    brick.MoveMotor('A', 19);       
+    brick.MoveMotor('B', 19);       
+    pause(0.5);                 
     
     end
     
@@ -86,14 +86,14 @@ while 1
     
     %compares distance, checks for large increase
     if (distance) > (oldistance+10)
-        brick.MoveMotor('A', 30); %turn right 90 degrees
-        brick.MoveMotor('B', -30);
+        brick.MoveMotor('A', 19); %turn right 90 degrees
+        brick.MoveMotor('B', -19);
         pause(0.5);               %-->adjust if necessary 
     end
     
     if (reading==1)               %check if touchsensor set to on
-        brick.MoveMotor('A', -30);
-        brick.MoveMotor('B', 30);
+        brick.MoveMotor('A', -19);
+        brick.MoveMotor('B', 19);
         pause(0.5);     %turn left and set sensor back to off
     end
 
