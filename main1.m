@@ -4,139 +4,138 @@ global key
 InitKeyboard();
 start = true;
         while 1
-            %liftUp();
             pause(0.1);
             switch key 
                 case 't'
                     while 1
-                        brick.SetColorMode(3,2);
+                        brick.SetColorMode(2,2);
                         distance = brick.UltrasonicDist(1);
                         display(distance);
+                        display(brick.ColorCode(2));
                         danger = 0;
-                        
-                        brick.MoveMotor('AB', 20);
-                        if distance <= 50
+                        if brick.ColorCode(2) == 4
+                            brick.MoveMotor('C', -5);
+                            pause(0.5);
+                            brick.MoveMotor('AB', 20);
+                            pause(0.6);
+                        end            
+                        if distance <= 30 
                             brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
-                            pause(1.5);
-                        else
-                            danger = 1;
-                            brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
-                            pause(2);
-                            brick.StopMotor('AB');
+                            brick.MoveMotor('A', -25);
+                            brick.MoveMotor('B', 25);
+                            pause(0.3);
                         end
-                        if brick.ColorCode(3) ~= 3
-                            brick.StopMotor('AB');
+                        if distance >= 30 
+                            brick.MoveMotor('AB', 40);
+                            pause(0.4);
                         end
-                        
-                        
-                        
-                       
+                        if brick.ColorCode(2) == 2
+                            brick.StopMotor('AB');
+                            brick.MoveMotor('C', 8);
+                            pause(0.5);
+                            brick.StopMotor('C');
+                        end
+                         if brick.ColorCode(2) == 5
+                            brick.StopMotor('AB');
+                            pause(4);
+                        end
+   
                     end
                  case 'g'
                      while 1
-                        brick.SetColorMode(3,2);
+                        brick.SetColorMode(2,2);
                         distance = brick.UltrasonicDist(1);
                         display(distance);
+                        display(brick.ColorCode(2));
                         danger = 0;
-                        
-                        brick.MoveMotor('AB', 20);
-                        if distance <= 50
-                            brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
-                            pause(1.5);
-                        else
-                            danger = 1;
-                            brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
+                        % Yellow
+                        if brick.ColorCode(2) == 4
+                            brick.MoveMotor('C', 35);
                             pause(2);
-                            brick.StopMotor('AB');
+                            brick.StopMotor('C', 35);
+                            brick.MoveMotor('AB', 20);
+                            pause(1);
                         end
-                        if brick.ColorCode(3) ~= 3
-                            brick.StopMotor('AB');
+                        % Green
+                        if brick.ColorCode(2) == 3
+                            sensorGreen();
                         end
-                        %else
-                            %danger = 1;
-                            %brick.StopMotor('AB');
-                            %brick.MoveMotor('A', -10);
-                            %brick.MoveMotor('B', 10);
-                            %pause(2);
-                            %brick.StopMotor('AB');
-                        
-                       
-                    end
-                 case 'y'
-                     while 1
-                    brick.SetColorMode(3,2);
-                    distance = brick.UltrasonicDist(1);
-                    display(distance);
-                    danger = 0;
-                        
-                        brick.MoveMotor('AB', 20);
-                        if distance <= 50
-                            brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
+                        % Blue
+                        if brick.ColorCode(2) == 2
+                            switch key
+                        case 'w'
+                            brick.MoveMotor('A', 10);
                             brick.MoveMotor('B', 10);
-                            pause(1.5);
-                        else
-                            danger = 1;
+                            pause(0.5);
+                         case 's'
+                             brick.MoveMotor('A', -10);
+                             brick.MoveMotor('B', -10);
+                             pause(0.5);                 
+                         case 'a'
+                             brick.MoveMotor('A', -10);
+                             brick.MoveMotor('B', 10);
+                             pause(0.5);
+                        case 'd'
+                             brick.MoveMotor('A', 10);
+                             brick.MoveMotor('B', -10);
+                             pause(0.5);
+                        case 'c'
+                             brick.MoveMotor('C', 35);
+                             pause(0.5);
+                             brick.StopMotor('C');
+                        case 'b' 
                             brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
-                            pause(2);
+                             break;
+                            end
+                        end          
+                        if distance <= 30 
+                            brick.StopMotor('AB');
+                            brick.MoveMotor('A', -25);
+                            brick.MoveMotor('B', 25);
+                            pause(0.5);
                             brick.StopMotor('AB');
                         end
-                        if brick.ColorCode(3) ~= 4
-                            brick.StopMotor('AB');
+                        if distance >= 30 
+                            brick.MoveMotor('AB', 40);
+                            pause(0.3);
+                          
                         end
-                        %else
-                            %danger = 1;
-                            %brick.StopMotor('AB');
-                            %brick.MoveMotor('A', -10);
-                            %brick.MoveMotor('B', 10);
-                            %pause(2);
-                            %brick.StopMotor('AB');
-                        
-                       
+                         if brick.ColorCode(2) == 5
+                            brick.StopMotor('AB');
+                            pause(4);
+                        end
+   
                     end
                  case 'b'
                      while 1
-                    brick.SetColorMode(3,2);
-                    distance = brick.UltrasonicDist(1);
-                    display(distance);
-                    danger = 0;
-                        
-                        brick.MoveMotor('AB', 20);
-                        if distance <= 50
+                        brick.SetColorMode(2,2);
+                        distance = brick.UltrasonicDist(1);
+                        display(distance);
+                        display(brick.ColorCode(2));
+                        danger = 0;
+                     
+                        brick.MoveMotor('C', -10);
+                        pause(1);
+                        if distance <= 40 && brick.ColorCode(2) == 7
                             brick.StopMotor('AB');
                             brick.MoveMotor('A', -10);
                             brick.MoveMotor('B', 10);
-                            pause(1.5);
-                        else
-                            danger = 1;
-                            brick.StopMotor('AB');
-                            brick.MoveMotor('A', -10);
-                            brick.MoveMotor('B', 10);
-                            pause(2);
-                            brick.StopMotor('AB');
+                            pause(0.5);
                         end
-                        if brick.ColorCode(3) ~= 2
-                            brick.StopMotor('AB');
+                        if distance >= 40 
+                            brick.MoveMotor('AB', 50);
+                            pause(1);
                         end
-                        %else
-                            %danger = 1;
-                            %brick.StopMotor('AB');
-                            %brick.MoveMotor('A', -10);
-                            %brick.MoveMotor('B', 10);
-                            %pause(2);
-                            %brick.StopMotor('AB');
-                        
-                       
+                        if brick.ColorCode(2) == 2
+                            brick.StopMotor('AB');
+                            brick.MoveMotor('C', 10);
+                            brick.StopMotor('C');
+                        end
+                         if brick.ColorCode(2) == 5
+                            brick.StopMotor('AB');
+                            pause(1);
+                        end
+   
                     end
                  case 's' % Exit in case something goes wrong, probably will
                      start = false;
@@ -148,4 +147,3 @@ start = true;
 
         
  
-
