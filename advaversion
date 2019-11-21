@@ -9,22 +9,65 @@
  %
  
  brick.SetColorMode(3,2);
- 
+
 while 1 
     
     color = brick.ColorCode(3);
     %color = readColor(mycolorsensor)
     
     if color==3         %green, search?
-                        
+
+    end
+     key
+        InitKeyboard();
+                while 1
+                    %liftUp();
+                    pause(0.1);
+                    switch key
+                        case 'w'
+                            brick.MoveMotor('A', 10);
+                            brick.MoveMotor('B', 10);
+                            pause(0.5);
+                         case 's'
+                             brick.MoveMotor('A', -10);
+                             brick.MoveMotor('B', -10);
+                             pause(0.5);                 
+                         case 'a'
+                             brick.MoveMotor('A', -10);
+                             brick.MoveMotor('B', 10);
+                             pause(0.5);
+                        case 'd'
+                             brick.MoveMotor('A', 10);
+                             brick.MoveMotor('B', -10);
+                             pause(0.5);
+                        case 'b' 
+                            brick.StopMotor('AB');
+                             break;
+                    end
+                end
+                CloseKeyboard();    
+                
+                %move forward a bit then grab with claw
+                brick.MoveMotor('A', 10);   
+                brick.MoveMotor('B', 10);
+                pause(3);
+                
+                brick.MoveMotor('C', -10);
+                pause(1.5);     
+               
     end
     
     if color==4         %yellow, slow?
-                        
+    
+    brick.MoveMotor('A', 30);       
+    brick.MoveMotor('B', 30);       
+    pause(1);                 
+    
     end
     
     if color==2         %blue, dropoff?
-                        
+    brick.MoveMotor('C', 10);
+    pause(1.5);            
     end
     
     %checks distance before moving 1 unit
